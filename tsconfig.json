@@ -1,0 +1,21 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "lib": ["es2017"],
+        "module": "commonjs",
+        "target": "es6",
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "rootDirs": ["bin"],
+        "baseUrl": "./",
+        "pretty": true,
+        "paths": {
+            "@utils/*": ["utils/*"],
+            "@commands/*": ["commands/*"]
+        }
+    },
+    "exclude": ["node_modules", "templates"]
+}

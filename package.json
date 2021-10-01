@@ -1,0 +1,29 @@
+{
+    "name": "react-cli",
+    "version": "1.0.0",
+    "description": "CLI для генерации шаблонного кода",
+    "bin": {
+        "react-cli": "bin/react-cli.js"
+    },
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc"
+    },
+    "author": "Evgeny Frolov",
+    "license": "ISC",
+    "dependencies": {
+        "ts-node": "^10.2.1",
+        "typescript": "^4.4.3"
+    },
+    "devDependencies": {
+        "@types/commander": "^2.12.2",
+        "@types/node": "^16.10.2",
+        "commander": "^8.2.0",
+        "execa": "^5.1.1",
+        "ink": "^3.0.9",
+        "inquirer": "^8.1.5",
+        "listr": "^0.14.3",
+        "meow": "^10.1.1",
+        "tslib": "^2.3.1"
+    }
+}
