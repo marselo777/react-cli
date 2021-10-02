@@ -1,31 +1,29 @@
 import { BaseAction } from '@actions/base/base.action';
 import { Input } from '@actions/models';
-import {
-    GenerateSchemaKeys,
-    generateSchema,
-    GenerateSchemaEntry,
-} from '@lib/schematics/generate';
+import { questionsSchema, GenerateSchemaEntry } from '@lib/schematics/generate';
+import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
 import inquirer, { DistinctQuestion } from 'inquirer';
-
+import { envVariable } from '@constants';
+import { ModuleRunner } from '@lib/runners/ModuleRunner';
+import { CollectionsSchema } from '@collections/collections.schema';
+import { CollectionFactory } from '@collections/types';
 export class GenerateAction extends BaseAction {
     public async build(
-        schematic: GenerateSchemaKeys,
+        schematic: QuestionsTemplateKeys,
         name?: string,
         path?: string,
         options?: Input
     ): Promise<void> {
-        const promptQuestions = await this.generateQuestions(
-            schematic,
-            path,
-            name
+        const collections = await ModuleRunner.load<CollectionsSchema>(
+            envVariable.collections
         );
-        const result = await inquirer.prompt(promptQuestions);
-    }
-    public async generateQuestions(
-        schematic: GenerateSchemaKeys,
-        path?: string,
-        name?: string
-    ): Promise<Input> {
-        return generateSchema[schematic];
+
+        const schemaFactory = await ModuleRunner.load<CollectionFactory>(
+            collections[schematic].factory,
+            {
+                importType: 'default',
+            }
+        );
+        schemaFactory.execute(schematic, name, path, options);
     }
 }
