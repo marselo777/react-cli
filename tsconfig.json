@@ -9,13 +9,16 @@
         "strict": true,
         "resolveJsonModule": true,
         "esModuleInterop": true,
-        "rootDirs": ["bin"],
-        "baseUrl": "./",
         "pretty": true,
+        "baseUrl": ".",
+        "rootDirs": ["src", "bin"],
         "paths": {
-            "@utils/*": ["utils/*"],
-            "@commands/*": ["commands/*"]
+            "@commands/*": ["src/commands/*"],
+            "@root/*": ["src/root/*"],
+            "@lib/*": ["src/lib/*"],
+            "@actions/*": ["src/actions/*"]
         }
     },
+    "include": ["src/**/*", "src"],
     "exclude": ["node_modules", "templates"]
 }

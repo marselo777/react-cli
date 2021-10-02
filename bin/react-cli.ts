@@ -1,8 +1,9 @@
 #!/usr/bin/env node
+import 'module-alias/register';
 import { Command, program } from 'commander';
-import { Commander } from 'root';
-import pck from '../package.json';
+import { Commander } from '../src';
 
+import pck from '../package.json';
 class Bootstrap {
     private static program: Command = program;
     static build() {
