@@ -7,7 +7,8 @@
     },
     "scripts": {
         "test": "echo \"Error: no test specified\" && exit 1",
-        "build": "tsc"
+        "build": "tsc",
+        "prepare": "husky install"
     },
     "author": "Evgeny Frolov",
     "license": "ISC",
@@ -20,6 +21,7 @@
         "@types/node": "^16.10.2",
         "commander": "^8.2.0",
         "execa": "^5.1.1",
+        "husky": "^7.0.0",
         "ink": "^3.0.9",
         "inquirer": "^8.1.5",
         "listr": "^0.14.3",
