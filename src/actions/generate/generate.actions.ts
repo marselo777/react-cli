@@ -1,8 +1,6 @@
 import { BaseAction } from '@actions/base/base.action';
 import { Input } from '@actions/models';
-import { questionsSchema, GenerateSchemaEntry } from '@lib/schematics/generate';
 import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
-import inquirer, { DistinctQuestion } from 'inquirer';
 import { envVariable } from '@constants';
 import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import { CollectionsSchema } from '@collections/collections.schema';
@@ -18,12 +16,28 @@ export class GenerateAction extends BaseAction {
             envVariable.collections
         );
 
-        const schemaFactory = await ModuleRunner.load<CollectionFactory>(
+        const collectionFactory = await ModuleRunner.load<CollectionFactory>(
             collections[schematic].factory,
             {
                 importType: 'default',
             }
         );
-        schemaFactory.execute(schematic, name, path, options);
+
+        const schemaJson = await ModuleRunner.load(
+            collections[schematic].schema
+        );
+        const parsedSchema = await transformSchema(schemaJson as any);
+        collectionFactory.execute(schematic, name, path, options, parsedSchema);
     }
+}
+
+async function transformSchema(schema: { properties: Record<string, any> }) {
+    return Object.entries(schema.properties).reduce((prev, [key, value]) => {
+        if (value?.default) {
+            return { ...prev, [key]: value.default };
+        }
+        return {
+            [key]: null,
+        };
+    }, {});
 }

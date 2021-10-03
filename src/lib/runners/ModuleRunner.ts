@@ -3,7 +3,7 @@ interface ModuleRunnerOptions {
     importType?: 'default';
 }
 export class ModuleRunner {
-    static async load<ModuleType>(
+    static async load<ModuleType extends {}>(
         path: string,
         options?: ModuleRunnerOptions
     ): Promise<ModuleType> {

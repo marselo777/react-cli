@@ -21,6 +21,13 @@
             "@constants": ["constants"]
         }
     },
-    "include": ["src/**/*", "src", "collections", "collections/**/*"],
+    "include": [
+        "src/**/*",
+        "src",
+        "collections",
+        "collections/**/*",
+        "bin",
+        "constants"
+    ],
     "exclude": ["node_modules", "templates"]
 }

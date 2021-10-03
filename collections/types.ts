@@ -6,6 +6,7 @@ export interface CollectionFactory {
         schematic: QuestionsTemplateKeys,
         name?: string,
         path?: string,
-        options?: Input
+        options?: Input,
+        schema?: Record<string, any>
     ) => Promise<void>;
 }
