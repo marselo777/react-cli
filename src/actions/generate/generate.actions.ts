@@ -5,7 +5,7 @@ import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import { CollectionsSchema } from '@collections/collections.schema';
 import { CollectionFactory } from '@collections/types';
 import { GenerateCommandOptions } from '@commands/generate';
-import { GenerateSchemaEntry, questionsSchema } from '@lib/schematics/generate';
+import { questionsSchema } from '@lib/schematics/generate';
 import inquirer from 'inquirer';
 export class GenerateAction extends BaseAction {
     public async build(
@@ -15,7 +15,7 @@ export class GenerateAction extends BaseAction {
         options?: GenerateCommandOptions
     ): Promise<void> {
         const collections = await ModuleRunner.load<CollectionsSchema>(
-            envVariable.collectionsDir
+            envVariable.collections
         );
 
         const collectionFactory = await ModuleRunner.load<CollectionFactory>(

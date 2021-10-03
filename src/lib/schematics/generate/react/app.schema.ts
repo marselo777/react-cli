@@ -11,7 +11,7 @@ export const appSchema: QuestionCollection = [
     },
     {
         type: 'confirm',
-        name: 'installDeps',
+        name: 'install',
         message: 'Установить зависимости?',
         when: (answer) => {
             return typeof answer?.installDeps === 'undefined'

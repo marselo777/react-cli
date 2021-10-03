@@ -1,8 +1,11 @@
 {
-    "outputOptions": {
-        "containerDir": "src/containers",
-        "entitiesDir": "src/entities",
-        "componentsDir": "src/components",
-        "widgetDir": "src/widgets"
+    "outputDir": {
+        "containers": "src/containes",
+        "entities": "src/entities",
+        "components": {
+            "common": "src/components",
+            "containers": "src/containers/components"
+        },
+        "widgets": "src/widgets"
     }
 }

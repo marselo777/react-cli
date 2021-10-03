@@ -31,7 +31,6 @@ export class GenerateCommand extends BaseCommand {
                     path: string,
                     options: GenerateCommandOptions
                 ) => {
-                    console.log(options, 'options');
                     await this.action.build(schematic, name, path, options);
                 }
             );
