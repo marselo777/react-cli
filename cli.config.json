@@ -1,1 +1,8 @@
-{}
+{
+    "outputOptions": {
+        "containerDir": "src/containers",
+        "entitiesDir": "src/entities",
+        "componentsDir": "src/components",
+        "widgetDir": "src/widgets"
+    }
+}

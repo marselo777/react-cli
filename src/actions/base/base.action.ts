@@ -1,3 +1,4 @@
+import { GenerateCommandOptions } from '@commands/generate';
 import { Input } from '../models';
 
 export abstract class BaseAction {
@@ -5,6 +6,6 @@ export abstract class BaseAction {
         schematic?: string,
         path?: string,
         name?: string,
-        options?: Input
+        options?: GenerateCommandOptions
     ): Promise<void>;
 }

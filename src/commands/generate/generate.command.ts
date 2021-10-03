@@ -2,6 +2,14 @@ import { BaseCommand } from '@commands/base/base.command';
 import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
 import { Command } from 'commander';
 
+
+export interface GenerateCommandOptions {
+    slice: boolean;
+    spec: boolean;
+    epic: boolean;
+    install: boolean;
+}
+
 export class GenerateCommand extends BaseCommand {
     public load(program: Command) {
         program
@@ -14,16 +22,17 @@ export class GenerateCommand extends BaseCommand {
             .option('--no-spec', 'Убрать генерацию тестов', false)
             .option('-e, --epic', 'Нужно ли генерировать Epic', true)
             .option('--no-epic', 'Убрать генерацию Epic', false)
-            .option('-i, --depsInstall', 'Нужно ли установить зависимости', true)
+            .option('-i, --install', 'Нужно ли установить зависимости', true)
+            .option('--no-install', 'Убрать установку зависимостей', false)
             .action(
                 async (
                     schematic: QuestionsTemplateKeys,
                     name: string,
                     path: string,
-                    command: Command
+                    options: GenerateCommandOptions
                 ) => {
-                    console.log(command, 'command');
-                    await this.action.build(schematic, name, path);
+                    console.log(options, 'options');
+                    await this.action.build(schematic, name, path, options);
                 }
             );
         

@@ -8,7 +8,7 @@
             "type": "string",
             "description": "Имя приложения"
         },
-        "installDeps": {
+        "install": {
             "type": "boolean",
             "default": true
         }

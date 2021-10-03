@@ -1,5 +1,6 @@
 import { Input } from '@actions/models';
 import { CollectionFactory } from '@collections/types';
+import { GenerateCommandOptions } from '@commands/generate';
 import { envVariable } from '@constants';
 import { UserConfiguration } from '@lib/configuration/configuration';
 import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
@@ -12,17 +13,14 @@ export default class AppFactory {
         schematic: QuestionsTemplateKeys,
         name: string,
         path?: string,
-        options?: Input,
-        schema?: AppOptions
+        options?: GenerateCommandOptions,
+        props?: AppOptions
     ) {
-        const configuration = UserConfiguration.create();
+        const configuration = await UserConfiguration.create();
 
         // const outputDir = join(configuration.userDir, name);
         // await fs.copy(envVariable.templates.app, outputDir, {
         //     recursive: true,
         // });
-        console.log(schema, 'app-factory');
-
-        console.log(schematic, name, path, options);
     }
 }

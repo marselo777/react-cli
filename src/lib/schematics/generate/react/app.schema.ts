@@ -9,4 +9,12 @@ export const appSchema: QuestionCollection = [
             return !answer.name;
         },
     },
+    {
+        type: 'confirm',
+        name: 'installDeps',
+        message: 'Установить зависимости?',
+        when: (answer) => {
+            return typeof answer?.installDeps === 'undefined'
+        }
+    }
 ];

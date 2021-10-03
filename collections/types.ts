@@ -1,4 +1,5 @@
 import { Input } from '@actions/models';
+import { GenerateCommandOptions } from '@commands/generate';
 import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
 
 export interface CollectionFactory {
@@ -6,7 +7,7 @@ export interface CollectionFactory {
         schematic: QuestionsTemplateKeys,
         name?: string,
         path?: string,
-        options?: Input,
+        options?: GenerateCommandOptions,
         schema?: Record<string, any>
     ) => Promise<void>;
 }

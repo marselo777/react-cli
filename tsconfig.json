@@ -11,14 +11,22 @@
         "esModuleInterop": true,
         "pretty": true,
         "baseUrl": ".",
-        "rootDirs": ["src", "bin", "collections", "constants", "scripts"],
+        "rootDirs": [
+            "src",
+            "bin",
+            "collections",
+            "constants",
+            "scripts",
+            "@types"
+        ],
         "paths": {
             "@commands/*": ["src/commands/*"],
             "@root/*": ["src/root/*"],
             "@lib/*": ["src/lib/*"],
             "@actions/*": ["src/actions/*"],
             "@collections/*": ["collections/*"],
-            "@constants": ["constants"]
+            "@constants": ["constants"],
+            "@types": ["@types"]
         }
     },
     "include": [
@@ -27,7 +35,8 @@
         "collections",
         "collections/**/*",
         "bin",
-        "constants"
+        "constants",
+        "@types"
     ],
     "exclude": ["node_modules", "templates"]
 }

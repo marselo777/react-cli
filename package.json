@@ -25,7 +25,8 @@
         "@commands": "src/commands",
         "@lib": "src/lib",
         "@collections": "collections",
-        "@constants": "constants"
+        "@constants": "constants",
+        "@types": "@types"
     },
     "devDependencies": {
         "@apidevtools/json-schema-ref-parser": "^9.0.9",
