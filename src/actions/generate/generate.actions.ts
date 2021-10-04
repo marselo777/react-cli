@@ -3,7 +3,7 @@ import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
 import { envVariable } from '@constants';
 import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import { CollectionsSchema } from 'src/collections/collections.schema';
-import { CollectionFactory } from 'src/collections/types';
+import { CollectionFactory, CollectionsSchemas } from 'src/collections/types';
 import { GenerateCommandOptions } from '@commands/generate';
 import {
     defaultQuestionsSchema,
@@ -34,10 +34,11 @@ export class GenerateAction extends BaseAction {
             }
         );
 
-        const schemaJson = await ModuleRunner.load(
+        const schemaJson = await ModuleRunner.load<CollectionsSchemas>(
             collections?.[schematic].schema
         );
-        const parsedSchema = await transformSchema(schemaJson as any);
+
+        const parsedSchema = await transformSchema(schemaJson);
 
         const generateValues = {
             ...parsedSchema,

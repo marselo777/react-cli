@@ -37,12 +37,12 @@ export default class AppFactory {
                     cwd: resolve(configuration.userDir, appName),
                 });
             },
-            skip: () => !props?.install,
+            skip: () => !props?.install ,
         });
         await tasks.run();
         console.log(
             chalk.green(
-                `Приложение ${name} успешно сгенерировано.`
+                `Приложение ${appName} успешно сгенерировано.`
             )
         );
     }

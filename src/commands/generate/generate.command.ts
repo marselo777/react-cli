@@ -14,7 +14,7 @@ export interface GenerateCommandOptions {
 export class GenerateCommand extends BaseCommand {
     public load(program: Command) {
         program
-            .command('generate [schematic] [name] [path]')
+            .command('generate <schematic> [name] [path]')
             .alias('g')
             .description('Кек')
             .option('-s, --slice', 'Нужно ли генерировать Slice', true)
