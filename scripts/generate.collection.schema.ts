@@ -2,7 +2,7 @@ import { compile } from 'json-schema-to-typescript';
 import path from 'path';
 import fs from 'fs';
 
-const collectionsFolder = path.join(__dirname, '../collections');
+const collectionsFolder = path.join(__dirname, '..', 'src', 'collections');
 
 fs.readdir(collectionsFolder, async (err, files) => {
     if (err) {

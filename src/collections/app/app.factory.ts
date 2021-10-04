@@ -17,7 +17,10 @@ export default class AppFactory {
         options?: GenerateCommandOptions,
         props?: AppOptions
     ) {
-        const configuration = await UserConfiguration.create();
+        const configuration = await UserConfiguration.create({
+            path,
+        });
+
         const appName = props?.name || name;
         const outputDir = join(configuration.userDir, appName);
         const tasks = new TaskManager();

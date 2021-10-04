@@ -11,32 +11,17 @@
         "esModuleInterop": true,
         "pretty": true,
         "baseUrl": ".",
-        "rootDirs": [
-            "src",
-            "bin",
-            "collections",
-            "constants",
-            "scripts",
-            "@types"
-        ],
+        "rootDirs": ["src", "bin", "constants", "scripts", "@types"],
         "paths": {
             "@commands/*": ["src/commands/*"],
             "@root/*": ["src/root/*"],
             "@lib/*": ["src/lib/*"],
             "@actions/*": ["src/actions/*"],
-            "@collections/*": ["collections/*"],
+            "@collections/*": ["src/collections/*"],
             "@constants": ["constants"],
             "@types": ["@types"]
         }
     },
-    "include": [
-        "src/**/*",
-        "src",
-        "collections",
-        "collections/**/*",
-        "bin",
-        "constants",
-        "@types"
-    ],
+    "include": ["src/**/*", "src", "bin", "constants", "@types"],
     "exclude": ["node_modules", "templates"]
 }

@@ -10,6 +10,13 @@ export interface AppOptions {
    * Имя приложения
    */
   name: string;
-  installDeps?: boolean;
+  /**
+   * Нужно ли запустить установку зависимостей
+   */
+  install?: boolean;
+  /**
+   * Путь до папки, в которую нужно будет сгенерировать приложение
+   */
+  path?: string;
   [k: string]: unknown;
 }

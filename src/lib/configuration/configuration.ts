@@ -2,8 +2,11 @@ import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import path from 'path';
 import { CliConfig } from '@types';
 import { envVariable } from '@constants';
+export interface IUserConfiguration {
+    path?: string;
+}
 export class UserConfiguration {
-    static async create() {
+    static async create(options?: IUserConfiguration) {
         const cliConfig = await ModuleRunner.load<CliConfig>(
             envVariable.cliConfigPath
         );
@@ -15,8 +18,13 @@ export class UserConfiguration {
             ...cliConfig,
             ...userCliConfig,
         };
+
+        const userDir = [process.cwd()];
+        if (options?.path) {
+            userDir.push(options.path);
+        }
         return {
-            userDir: process.cwd(),
+            userDir: path.resolve(...userDir),
             ...config,
         };
     }

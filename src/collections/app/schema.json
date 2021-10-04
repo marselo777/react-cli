@@ -10,7 +10,12 @@
         },
         "install": {
             "type": "boolean",
+            "description": "Нужно ли запустить установку зависимостей",
             "default": true
+        },
+        "path": {
+            "type": "string",
+            "description": "Путь до папки, в которую нужно будет сгенерировать приложение"
         }
     },
     "required": ["name"]
