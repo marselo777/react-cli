@@ -1,7 +1,6 @@
 import { GenerateCommandOptions } from '@commands/generate';
 import { envVariable } from '@constants';
 import { UserConfiguration } from '@lib/configuration/configuration';
-import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
 import fs from 'fs-extra';
 import { join, resolve } from 'path';
 import { AppOptions } from './app.schema';
@@ -11,15 +10,13 @@ import execa from 'execa';
 
 export default class AppFactory {
     static async execute(
-        schematic: QuestionsTemplateKeys,
-        name: string,
-        options?: GenerateCommandOptions,
-        props?: AppOptions
+        props: AppOptions,
+        options: GenerateCommandOptions,
     ) {
         const configuration = await UserConfiguration.create({
             path: props?.path,
         });
-        const appName = props?.name || name;
+        const appName = props?.name || options.name;
         const outputDir = join(configuration.userDir, appName);
         const tasks = new TaskManager();
         tasks.add({

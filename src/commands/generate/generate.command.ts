@@ -8,9 +8,12 @@ export interface GenerateCommandOptions {
     spec: boolean;
     epic: boolean;
     install: boolean;
-    path?: string;
+    path: string;
+    name: string;
+    schematic: QuestionsTemplateKeys
 }
 
+export type  GenerateOptions = Omit<GenerateCommandOptions, 'schematic' | 'name' | 'path'>;
 export class GenerateCommand extends BaseCommand {
     public load(program: Command) {
         program
@@ -31,9 +34,15 @@ export class GenerateCommand extends BaseCommand {
                     schematic: QuestionsTemplateKeys,
                     name: string,
                     path: string,
-                    options: GenerateCommandOptions
+                    options: GenerateOptions
                 ) => {
-                    await this.action.build(schematic, name, path, options);
+                    const opt = {
+                        path,
+                        name,
+                        schematic,
+                        ...options
+                    }
+                    await this.action.build(opt);
                 }
             );
         

@@ -13,14 +13,9 @@ import inquirer from 'inquirer';
 import { transformSchema } from '@lib/transformation';
 import { getQuestions } from '@lib/common';
 export class GenerateAction extends BaseAction {
-    public async build(
-        schematicType: QuestionsTemplateKeys,
-        name?: string,
-        path?: string,
-        options?: GenerateCommandOptions
-    ): Promise<void> {
+    public async build(options: GenerateCommandOptions): Promise<void> {
         const schematic = await getSchematicName<QuestionsTemplateKeys>(
-            schematicType
+            options.schematic
         );
 
         const collections = await ModuleRunner.load<CollectionsSchema>(
@@ -42,9 +37,7 @@ export class GenerateAction extends BaseAction {
 
         const generateValues = {
             ...parsedSchema,
-            path,
             ...options,
-            name,
         };
 
         const questions = await getQuestions(questionsSchema, schematic);
@@ -53,7 +46,7 @@ export class GenerateAction extends BaseAction {
             generateValues
         );
 
-        collectionFactory?.execute(schematic, name, options, questionsResult);
+        collectionFactory?.execute(questionsResult, options);
     }
 }
 
