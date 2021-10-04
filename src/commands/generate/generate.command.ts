@@ -8,12 +8,13 @@ export interface GenerateCommandOptions {
     spec: boolean;
     epic: boolean;
     install: boolean;
+    path?: string;
 }
 
 export class GenerateCommand extends BaseCommand {
     public load(program: Command) {
         program
-            .command('generate <schematic> [name] [path]')
+            .command('generate [schematic] [name] [path]')
             .alias('g')
             .description('Кек')
             .option('-s, --slice', 'Нужно ли генерировать Slice', true)
@@ -24,6 +25,7 @@ export class GenerateCommand extends BaseCommand {
             .option('--no-epic', 'Убрать генерацию Epic', false)
             .option('-i, --install', 'Нужно ли установить зависимости', true)
             .option('--no-install', 'Убрать установку зависимостей', false)
+            .option('-p, --path <type>', 'Путь к папке для сгенерированных файлов.', (value) => value)
             .action(
                 async (
                     schematic: QuestionsTemplateKeys,

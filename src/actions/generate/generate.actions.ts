@@ -5,15 +5,24 @@ import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import { CollectionsSchema } from 'src/collections/collections.schema';
 import { CollectionFactory } from 'src/collections/types';
 import { GenerateCommandOptions } from '@commands/generate';
-import { questionsSchema } from '@lib/schematics/generate';
+import {
+    defaultQuestionsSchema,
+    questionsSchema,
+} from '@lib/schematics/generate';
 import inquirer from 'inquirer';
+import { transformSchema } from '@lib/transformation';
+import { getQuestions } from '@lib/common';
 export class GenerateAction extends BaseAction {
     public async build(
-        schematic: QuestionsTemplateKeys,
+        schematicType: QuestionsTemplateKeys,
         name?: string,
         path?: string,
         options?: GenerateCommandOptions
     ): Promise<void> {
+        const schematic = await getSchematicName<QuestionsTemplateKeys>(
+            schematicType
+        );
+
         const collections = await ModuleRunner.load<CollectionsSchema>(
             envVariable.collections
         );
@@ -32,6 +41,7 @@ export class GenerateAction extends BaseAction {
 
         const generateValues = {
             ...parsedSchema,
+            path,
             ...options,
             name,
         };
@@ -42,36 +52,17 @@ export class GenerateAction extends BaseAction {
             generateValues
         );
 
-        collectionFactory?.execute(
-            schematic,
-            name,
-            path,
-            options,
-            questionsResult
-        );
+        collectionFactory?.execute(schematic, name, options, questionsResult);
     }
 }
 
-async function getQuestions<
-    Questions extends Record<string, any> = any,
-    QuestionsKey extends string = string
->(
-    questions: Questions,
-    schematics: QuestionsKey
-): Promise<Questions[QuestionsKey]> {
-    return questions[schematics];
-}
-
-async function transformSchema(schema: { properties: Record<string, any> }) {
-    return Object.entries(schema?.properties || {}).reduce(
-        (prev, [key, value]) => {
-            if (value?.default) {
-                return { ...prev, [key]: value.default };
-            }
-            return {
-                [key]: null,
-            };
-        },
-        {}
-    );
+async function getSchematicName<Keys>(schematicType?: Keys): Promise<Keys> {
+    if (schematicType) {
+        return schematicType;
+    } else {
+        const { schematic } = await inquirer.prompt<any>(
+            defaultQuestionsSchema
+        );
+        return schematic;
+    }
 }

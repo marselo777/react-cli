@@ -1,3 +1,5 @@
+import { QuestionCollection } from 'inquirer';
+import choices from 'inquirer/lib/objects/choices';
 import {
     appSchema,
     componentSchema,
@@ -15,5 +17,12 @@ export const questionsSchema = {
     component: componentSchema,
     epic: epicSchema,
 };
+
+export const defaultQuestionsSchema:QuestionCollection =  {
+    message: 'Выберите по какой схеме начать генерацию',
+    type: 'list',
+    name: 'schematic',
+    choices: Object.keys(questionsSchema),
+}
 
 export type GenerateSchemaEntry = typeof questionsSchema;

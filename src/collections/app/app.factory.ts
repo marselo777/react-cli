@@ -13,14 +13,12 @@ export default class AppFactory {
     static async execute(
         schematic: QuestionsTemplateKeys,
         name: string,
-        path?: string,
         options?: GenerateCommandOptions,
         props?: AppOptions
     ) {
         const configuration = await UserConfiguration.create({
-            path,
+            path: props?.path,
         });
-
         const appName = props?.name || name;
         const outputDir = join(configuration.userDir, appName);
         const tasks = new TaskManager();
@@ -39,12 +37,12 @@ export default class AppFactory {
                     cwd: resolve(configuration.userDir, appName),
                 });
             },
-            skip: () => !!props?.installDeps,
+            skip: () => !props?.install,
         });
         await tasks.run();
         console.log(
-            chalk.blue(
-                `Приложение ${name} успешно сгенерировано, приятной работы!`
+            chalk.green(
+                `Приложение ${name} успешно сгенерировано.`
             )
         );
     }
