@@ -6,5 +6,13 @@ export const envVariable = {
     cliConfigPath: path.resolve(__dirname, '..', 'cli.config.json'),
     templates: {
         app: path.resolve(__dirname, '..', 'templates', 'react', 'app'),
+        component: path.resolve(
+            __dirname,
+            '..',
+            'templates',
+            'react',
+            'component',
+            '__name__.ts'
+        ),
     },
 };

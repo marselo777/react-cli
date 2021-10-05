@@ -4,7 +4,7 @@
         "entities": "src/entities",
         "components": {
             "common": "src/components",
-            "containers": "src/containers/components"
+            "containers": "src/containers"
         },
         "widgets": "src/widgets"
     }

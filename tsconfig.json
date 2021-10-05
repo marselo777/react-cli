@@ -23,5 +23,5 @@
         }
     },
     "include": ["src/**/*", "src", "bin", "constants", "@types"],
-    "exclude": ["node_modules", "templates"]
+    "exclude": ["templates", "templates/**/*"]
 }

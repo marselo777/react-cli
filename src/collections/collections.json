@@ -16,8 +16,8 @@
         "schema": "@collections/container/schema.json"
     },
     "component": {
-        "factory": "@collections/container/container.factory",
-        "schema": "@collections/container/schema.json"
+        "factory": "@collections/component/component.factory",
+        "schema": "@collections/component/schema.json"
     },
     "entity": {
         "factory": "@collections/container/container.factory",
