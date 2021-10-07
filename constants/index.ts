@@ -11,8 +11,7 @@ export const envVariable = {
             '..',
             'templates',
             'react',
-            'component',
-            '__name__.ts'
+            'component'
         ),
     },
 };

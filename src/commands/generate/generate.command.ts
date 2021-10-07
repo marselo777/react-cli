@@ -1,7 +1,6 @@
 import { BaseCommand } from '@commands/base/base.command';
-import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
+import { QuestionsTemplateKeys } from 'src/questions/generate/types';
 import { Command } from 'commander';
-
 
 export interface GenerateCommandOptions {
     slice: boolean;
@@ -10,6 +9,7 @@ export interface GenerateCommandOptions {
     install: boolean;
     path: string;
     name: string;
+    style?: boolean;
     schematic: QuestionsTemplateKeys
 }
 
@@ -23,6 +23,7 @@ export class GenerateCommand extends BaseCommand {
             .option('-s, --slice', 'Нужно ли генерировать Slice', true)
             .option('--no-slice', 'Убрать генерацию Slice', false)
             .option('--spec', 'Генерировать ли тесты', true)
+            .option('--style', 'Создает styled-компонент')
             .option('--no-spec', 'Убрать генерацию тестов', false)
             .option('-e, --epic', 'Нужно ли генерировать Epic', true)
             .option('--no-epic', 'Убрать генерацию Epic', false)
@@ -34,15 +35,16 @@ export class GenerateCommand extends BaseCommand {
                     schematic: QuestionsTemplateKeys,
                     name: string,
                     path: string,
-                    options: GenerateOptions
+                    opt: GenerateOptions
                 ) => {
-                    const opt = {
+                    const options = {
                         path,
                         name,
                         schematic,
-                        ...options
+                        ...opt
                     }
-                    await this.action.build(opt);
+
+                    await this.action.build(options);
                 }
             );
         

@@ -25,6 +25,7 @@ export class UserConfiguration {
         }
         return {
             userDir: path.resolve(...userDir),
+            defaultFileName: '__name__',
             ...config,
         };
     }

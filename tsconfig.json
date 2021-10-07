@@ -19,9 +19,10 @@
             "@actions/*": ["src/actions/*"],
             "@collections/*": ["src/collections/*"],
             "@constants": ["constants"],
-            "@types": ["@types"]
+            "@types": ["@types"],
+            "@questions/*": ["src/questions/*"]
         }
     },
     "include": ["src/**/*", "src", "bin", "constants", "@types"],
-    "exclude": ["templates", "templates/**/*"]
+    "exclude": ["node_modules", "templates/*", "templates/**/*"]
 }

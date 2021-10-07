@@ -2,12 +2,10 @@ import { GenerateCommandOptions } from '@commands/generate';
 import { envVariable } from '@constants';
 import { UserConfiguration } from '@lib/configuration/configuration';
 import fs from 'fs-extra';
-import { join, resolve } from 'path';
+import  { join } from 'path';
 import { ComponentOptions } from './component.schema';
 import TaskManager from 'listr';
 import chalk from 'chalk';
-import execa from 'execa';
-import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import {template} from 'lodash';
 
 export default class ComponentFactory {
@@ -19,17 +17,21 @@ export default class ComponentFactory {
             path: props?.path,
         });
         const componentName = props?.name || options.name;
-        const outputDir = join(configuration.userDir, componentName + '.ts');
+        const componentExt =  options.style ? 'styles.ts': 'ts'; 
+        const baseFileName = [ configuration.defaultFileName, componentExt].join('.');
+        const outputFileName =  [componentName, componentExt].join('.')
+        const outputDir = join(configuration.userDir, outputFileName);
+        const readedFile = join(envVariable.templates.component, baseFileName)
         const tasks = new TaskManager();
 
         tasks.add({
             title: 'Генерация компонента',
             task: async (ctx) => {
-                const componentTemplate = await fs.readFile(envVariable.templates.component);
-                const compile = template(String(componentTemplate));
-                ctx.template = compile({
+                const componentTemplate = await fs.readFile(readedFile);
+                const replacedFile = template(String(componentTemplate))({
                     Name: componentName
-                })
+                });
+                ctx.template = replacedFile;
             }
         });
 
@@ -43,7 +45,7 @@ export default class ComponentFactory {
         await tasks.run();
         console.log(
             chalk.green(
-                `Компонент ${componentName} успешно сгенерирован.`
+                `Компонент ${componentName} успешно создан.`
             )
         );
     }

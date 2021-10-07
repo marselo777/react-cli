@@ -1,14 +1,11 @@
 import { BaseAction } from '@actions/base/base.action';
-import { QuestionsTemplateKeys } from '@lib/schematics/generate/types';
+import { QuestionsTemplateKeys } from 'src/questions/generate/types';
 import { envVariable } from '@constants';
 import { ModuleRunner } from '@lib/runners/ModuleRunner';
 import { CollectionsSchema } from 'src/collections/collections.schema';
 import { CollectionFactory, CollectionsSchemas } from 'src/collections/types';
 import { GenerateCommandOptions } from '@commands/generate';
-import {
-    defaultQuestionsSchema,
-    questionsSchema,
-} from '@lib/schematics/generate';
+import { defaultQuestionsSchema, questionsSchema } from '@questions/generate';
 import inquirer from 'inquirer';
 import { transformSchema } from '@lib/transformation';
 import { getQuestions } from '@lib/common';
