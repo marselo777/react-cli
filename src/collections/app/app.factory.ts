@@ -7,9 +7,10 @@ import { AppOptions } from './app.schema';
 import TaskManager from 'listr';
 import chalk from 'chalk';
 import execa from 'execa';
+import { AbstractFactory } from '@collections/AbstractFactory';
 
-export default class AppFactory {
-    static async execute(
+export default class AppFactory extends AbstractFactory {
+    async execute(
         props: AppOptions,
         options: GenerateCommandOptions,
     ) {

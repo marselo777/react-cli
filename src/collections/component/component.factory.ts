@@ -7,9 +7,10 @@ import { ComponentOptions } from './component.schema';
 import TaskManager from 'listr';
 import chalk from 'chalk';
 import {template} from 'lodash';
+import { AbstractFactory } from '@collections/AbstractFactory';
 
-export default class ComponentFactory {
-    static async execute(
+export default class ComponentFactory extends AbstractFactory{
+    async execute(
         props: ComponentOptions,
         options: GenerateCommandOptions,
     ) {
@@ -19,9 +20,9 @@ export default class ComponentFactory {
         const componentName = props?.name || options.name;
         const componentExt =  options.style ? 'styles.ts': 'ts'; 
         const baseFileName = [ configuration.defaultFileName, componentExt].join('.');
-        const outputFileName =  [componentName, componentExt].join('.')
+        const outputFileName =  [componentName, componentExt].join('.');
         const outputDir = join(configuration.userDir, outputFileName);
-        const readedFile = join(envVariable.templates.component, baseFileName)
+        const readedFile = join(envVariable.templates.component, baseFileName);
         const tasks = new TaskManager();
 
         tasks.add({

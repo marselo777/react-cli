@@ -43,7 +43,8 @@ export class GenerateAction extends BaseAction {
             generateValues
         );
 
-        collectionFactory?.execute(questionsResult, options);
+        collectionFactory &&
+            new collectionFactory().execute(questionsResult, options);
     }
 }
 
