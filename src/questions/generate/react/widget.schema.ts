@@ -5,7 +5,7 @@ export const widgetSchema: QuestionCollection = [
         type: 'input',
         name: 'name',
         message: 'Укажите название для виджета',
-        when: (answer) => {
+        when: (answer: any) => {
             return !answer.name;
         },
     },

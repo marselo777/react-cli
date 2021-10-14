@@ -5,7 +5,7 @@ export const sliceSchema: QuestionCollection = [
         type: 'input',
         name: 'name',
         message: 'Укажите название для Slice',
-        when: (answer) => {
+        when: (answer: any) => {
             return !answer.name;
         },
     },

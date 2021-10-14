@@ -5,7 +5,7 @@ export const epicSchema: QuestionCollection = [
         type: 'input',
         name: 'name',
         message: 'Укажите название для Epic',
-        when: (answer) => {
+        when: (answer: any) => {
             return !answer.name;
         },
     },

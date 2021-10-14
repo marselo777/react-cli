@@ -5,7 +5,7 @@ export const appSchema: QuestionCollection = [
         type: 'input',
         name: 'name',
         message: 'Укажите название для приложения',
-        when: (answer) => {
+        when: (answer: any) => {
             return !answer.name;
         },
     },
@@ -13,7 +13,7 @@ export const appSchema: QuestionCollection = [
         type: 'confirm',
         name: 'install',
         message: 'Установить зависимости?',
-        when: (answer) => {
+        when: (answer: any) => {
             return typeof answer?.installDeps === 'undefined';
         },
     },

@@ -8,23 +8,23 @@
         "schema": "@collections/container/schema.json"
     },
     "epic": {
-        "factory": "@collections/container/container.factory",
-        "schema": "@collections/container/schema.json"
+        "factory": "@collections/epic/epic.factory",
+        "schema": "@collections/epic/schema.json"
     },
     "slice": {
-        "factory": "@collections/container/container.factory",
-        "schema": "@collections/container/schema.json"
+        "factory": "@collections/slice/slice.factory",
+        "schema": "@collections/slice/schema.json"
     },
     "component": {
         "factory": "@collections/component/component.factory",
         "schema": "@collections/component/schema.json"
     },
     "entity": {
-        "factory": "@collections/container/container.factory",
-        "schema": "@collections/container/schema.json"
+        "factory": "@collections/entity/entity.factory",
+        "schema": "@collections/entity/schema.json"
     },
     "widget": {
-        "factory": "@collections/container/container.factory",
-        "schema": "@collections/container/schema.json"
+        "factory": "@collections/widget/widget.factory",
+        "schema": "@collections/widget/schema.json"
     }
 }

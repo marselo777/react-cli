@@ -5,7 +5,7 @@ export const containerSchema: QuestionCollection = [
         type: 'input',
         name: 'name',
         message: 'Укажите название для контейнера',
-        when: (answer) => {
+        when: (answer: any) => {
             return !answer.name;
         },
     },
