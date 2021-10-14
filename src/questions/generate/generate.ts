@@ -18,11 +18,11 @@ export const questionsSchema = {
     epic: epicSchema,
 };
 
-export const defaultQuestionsSchema:QuestionCollection =  {
+export const defaultQuestionsSchema: QuestionCollection = {
     message: 'Выберите по какой схеме начать генерацию',
     type: 'list',
     name: 'schematic',
     choices: Object.keys(questionsSchema),
-}
+};
 
 export type GenerateSchemaEntry = typeof questionsSchema;

@@ -49,6 +49,7 @@
         "listr": "^0.14.3",
         "meow": "^10.1.1",
         "module-alias": "^2.2.2",
+        "prettier": "^2.4.1",
         "schema-utils": "^3.1.1",
         "tslib": "^2.3.1",
         "webpack": "^5.56.0"

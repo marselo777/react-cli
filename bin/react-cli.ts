@@ -10,7 +10,7 @@ class Bootstrap {
         this.program
             .version(pck.version, '-v --version', 'Выводит текущую версию')
             .usage('<command> [options]')
-            .helpOption('-h --help', 'Выводит информацию для использования')
+            .helpOption('-h --help', 'Выводит информацию для использования');
 
         Commander.run(this.program);
 

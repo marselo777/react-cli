@@ -10,10 +10,7 @@ import execa from 'execa';
 import { AbstractFactory } from '@collections/AbstractFactory';
 
 export default class AppFactory extends AbstractFactory {
-    async execute(
-        props: AppOptions,
-        options: GenerateCommandOptions,
-    ) {
+    async execute(props: AppOptions, options: GenerateCommandOptions) {
         const configuration = await UserConfiguration.create({
             path: props?.path,
         });
@@ -35,13 +32,11 @@ export default class AppFactory extends AbstractFactory {
                     cwd: resolve(configuration.userDir, appName),
                 });
             },
-            skip: () => !props?.install ,
+            skip: () => !props?.install,
         });
         await tasks.run();
         console.log(
-            chalk.green(
-                `Приложение ${appName} успешно сгенерировано.`
-            )
+            chalk.green(`Приложение ${appName} успешно сгенерировано.`)
         );
     }
 }

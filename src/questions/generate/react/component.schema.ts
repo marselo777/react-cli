@@ -14,7 +14,7 @@ export const componentSchema: QuestionCollection = [
         name: 'path',
         message: 'Укажите путь к папке в которую нужно сгенерировать компонент',
         when: (answer) => {
-            return !answer.path
-        }
+            return !answer.path;
+        },
     },
 ];

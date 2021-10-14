@@ -1,7 +1,5 @@
-import { AbstractFactory } from "@collections/AbstractFactory";
+import { AbstractFactory } from '@collections/AbstractFactory';
 
 export class ContainerFactory extends AbstractFactory {
-    async execute() {
-        
-    }
+    async execute() {}
 }
