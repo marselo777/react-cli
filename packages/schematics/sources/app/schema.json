@@ -1,0 +1,22 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ReactAppSchema",
+    "title": "AppOptions",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Имя приложения"
+        },
+        "install": {
+            "type": "boolean",
+            "description": "Нужно ли запустить установку зависимостей",
+            "default": true
+        },
+        "path": {
+            "type": "string",
+            "description": "Путь до папки, в которую нужно будет сгенерировать приложение"
+        }
+    },
+    "required": ["name"]
+}

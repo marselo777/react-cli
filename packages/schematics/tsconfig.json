@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "declaration": true,
+        "lib": ["es2017"],
+        "module": "commonjs",
+        "target": "es6",
+        "skipLibCheck": true,
+        "sourceMap": false,
+        "strict": true,
+        "resolveJsonModule": true,
+        "esModuleInterop": true,
+        "noImplicitAny": false,
+        "pretty": true,
+        "baseUrl": "."
+    },
+    "exclude": ["sources/**/files"]
+}

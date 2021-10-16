@@ -9,25 +9,31 @@ import { defaultQuestionsSchema, questionsSchema } from '@questions/generate';
 import inquirer from 'inquirer';
 import { transformSchema } from '@lib/transformation';
 import { getQuestions } from '@lib/common';
+import collections from '@slenter/cli-schematics';
+import path from 'path';
 export class GenerateAction extends BaseAction {
     public async build(options: GenerateCommandOptions): Promise<void> {
         const schematic = await getSchematicName<QuestionsTemplateKeys>(
             options.schematic
         );
 
-        const collections = await ModuleRunner.load<CollectionsSchema>(
-            envVariable.collections
-        );
-
         const collectionFactory = await ModuleRunner.load<CollectionFactory>(
-            collections?.[schematic].factory,
+            path.join(
+                '@slenter/cli-schematics',
+                'sources',
+                collections?.[schematic].factory
+            ),
             {
                 importType: 'default',
             }
         );
 
         const schemaJson = await ModuleRunner.load<CollectionsSchemas>(
-            collections?.[schematic].schema
+            path.join(
+                '@slenter/cli-schematics',
+                'sources',
+                collections?.[schematic].schema
+            )
         );
 
         const parsedSchema = await transformSchema(schemaJson);

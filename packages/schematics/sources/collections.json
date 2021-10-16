@@ -1,0 +1,30 @@
+{
+    "app": {
+        "factory": "./app/app.factory",
+        "schema": "./app/schema.json"
+    },
+    "container": {
+        "factory": "./container/container.factory",
+        "schema": "./container/schema.json"
+    },
+    "epic": {
+        "factory": "./epic/epic.factory",
+        "schema": "./epic/schema.json"
+    },
+    "slice": {
+        "factory": "./slice/slice.factory",
+        "schema": "./slice/schema.json"
+    },
+    "component": {
+        "factory": "./component/component.factory",
+        "schema": "./component/schema.json"
+    },
+    "entity": {
+        "factory": "./entity/entity.factory",
+        "schema": "./entity/schema.json"
+    },
+    "widget": {
+        "factory": "./widget/widget.factory",
+        "schema": "./widget/schema.json"
+    }
+}

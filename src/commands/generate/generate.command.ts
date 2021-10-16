@@ -1,7 +1,7 @@
 import { BaseCommand } from '@commands/base/base.command';
 import { QuestionsTemplateKeys } from 'src/questions/generate/types';
 import { Command } from 'commander';
-
+import { dirname } from 'path';
 export interface GenerateCommandOptions {
     slice: boolean;
     spec: boolean;
@@ -10,10 +10,13 @@ export interface GenerateCommandOptions {
     path: string;
     name: string;
     style?: boolean;
-    schematic: QuestionsTemplateKeys
+    schematic: QuestionsTemplateKeys;
 }
 
-export type  GenerateOptions = Omit<GenerateCommandOptions, 'schematic' | 'name' | 'path'>;
+export type GenerateOptions = Omit<
+    GenerateCommandOptions,
+    'schematic' | 'name' | 'path'
+>;
 export class GenerateCommand extends BaseCommand {
     public load(program: Command) {
         program
@@ -29,7 +32,11 @@ export class GenerateCommand extends BaseCommand {
             .option('--no-epic', 'Убрать генерацию Epic', false)
             .option('-i, --install', 'Нужно ли установить зависимости', true)
             .option('--no-install', 'Убрать установку зависимостей', false)
-            .option('-p, --path <type>', 'Путь к папке для сгенерированных файлов.', (value) => value)
+            .option(
+                '-p, --path <type>',
+                'Путь к папке для сгенерированных файлов.',
+                (value) => value
+            )
             .action(
                 async (
                     schematic: QuestionsTemplateKeys,
@@ -41,12 +48,10 @@ export class GenerateCommand extends BaseCommand {
                         path,
                         name,
                         schematic,
-                        ...opt
-                    }
-
+                        ...opt,
+                    };
                     await this.action.build(options);
                 }
             );
-        
     }
 }

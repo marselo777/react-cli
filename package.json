@@ -1,5 +1,5 @@
 {
-    "name": "react-cli",
+    "name": "@slenter/rc-cli",
     "version": "1.0.0",
     "description": "CLI для генерации шаблонного кода",
     "bin": {
@@ -15,8 +15,10 @@
     "author": "Evgeny Frolov",
     "license": "ISC",
     "dependencies": {
+        "@slenter/cli-schematics": "^1.0.3",
         "@types/fs-extra": "^9.0.13",
         "@types/listr": "^0.14.4",
+        "lerna": "^4.0.0",
         "ts-node": "^10.2.1",
         "typescript": "^4.4.3"
     },

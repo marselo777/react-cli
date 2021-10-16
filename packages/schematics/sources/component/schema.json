@@ -1,0 +1,21 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema#",
+    "$id": "ReactAppSchema",
+    "title": "ComponentOptions",
+    "type": "object",
+    "properties": {
+        "name": {
+            "type": "string",
+            "description": "Имя компонента"
+        },
+        "style": {
+            "type": "string",
+            "description": "Имя компонента"
+        },
+        "path": {
+            "type": "string",
+            "description": "Путь до папки, в которую нужно будет сгенерирован компонент"
+        }
+    },
+    "required": ["name"]
+}

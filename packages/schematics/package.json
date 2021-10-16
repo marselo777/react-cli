@@ -1,0 +1,17 @@
+{
+    "name": "@slenter/cli-schematics",
+    "version": "1.0.3",
+    "description": "schematics-cli",
+    "main": "sources/collections.json",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1",
+        "build": "tsc",
+        "clean": "tsc --build --clean"
+    },
+    "schematics": "sources/collections.json",
+    "author": "Evgeny Frolov",
+    "license": "ISC",
+    "dependencies": {
+        "typescript": "^4.4.4"
+    }
+}
